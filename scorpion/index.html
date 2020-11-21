@@ -3,10 +3,54 @@
     <head>
         <meta charset="UTF-8"/>
         <title>Download scorpion-v0.1.0-alpha</title>
+        <link rel="icon" type="image/png" href="./ic_launcher.png"/>
+        <style>
+            html {
+                width: 100%;
+                height: 100%;
+            }
+
+            body {
+                width: 100%;
+                height: 70%;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin: 0px;
+                padding: 0px;
+            }
+
+            img {
+                max-width: 40%;
+            }
+
+            button {
+                border-radius: 10px;
+                scale: 2;
+            }
+
+            button:hover {
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
-        <a href="https://liamabyss.github.io/scorpion/Scorpion_151120_1335.apk" download="Scorpion_151120_1335.apk" title="Scorpion_151120_1335.apk">
+
+        <img src="./banner.png" alt="Banner image"/>
+        <br/>
+        <a href="#" download="Scorpion.apk">
             <button>Download last version</button>
         </a>
+        <script>
+            let link = document.querySelector("a");
+            fetch("https://api.github.com/repos/LiamAbyss/Scorpion/releases")
+                .then((res) => {
+                    return res.json();
+                })
+                .then((jsonFile) => {
+                    link.setAttribute("href", jsonFile[0]["assets"][0]["browser_download_url"]);
+                });
+        </script>
     </body>
 </html>
