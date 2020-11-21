@@ -31,12 +31,27 @@
                 max-width: 30%;
                 max-height: 30%;
             }
+            @media screen and (max-width: 1280px)
+            {
+                img {
+                    max-width: 80%;
+                }
+            }
 
             button {
                 border-radius: 10px;
                 width: 40%;
                 height: 50%;
                 margin-bottom: 10%;
+            }
+            @media screen and (max-width: 1280px)
+            {
+                button {
+                    width: max-content;
+                    height: 50%;
+                    font-size: xx-large;
+                    font-weight: bold;
+                }
             }
 
             button:hover {
@@ -45,7 +60,16 @@
 
             #latestRelease {
                 width: 40%;
-                height: 10%;
+                height: max-content;
+            }
+            @media screen and (max-width: 1280px)
+            {
+                #latestRelease {
+                    width: 100%;
+                    height: max-content;
+                    font-size: xx-large;
+                    font-weight: bold;
+                }
             }
 
             #isPreRelease {
@@ -62,9 +86,16 @@
             #allReleases {
                 width: 60%;
                 height: 50%;
-                background-color: burlywood;
                 padding-bottom: 1%;
                 overflow-y: auto;
+                border-bottom: 2px solid gray;
+            }
+            @media screen and (max-width: 1280px)
+            {
+                #allReleases {
+                    width: 100%;
+                    font-size: x-large;
+                }
             }
 
             table {
@@ -73,16 +104,17 @@
                 border-collapse: collapse;
                 text-align: center;
                 position: relative;
+                height: max-content;
             }
  
-            table,th, td {
-                border: 1px solid gray;
+            table, th, td {
+                border: 2px solid gray;
             }
 
             th {
                 background: linear-gradient(#E20613, #B20613);
                 position: sticky;
-                top: 0px;
+                top: -1px;
             }
 
             th, td {
@@ -119,7 +151,7 @@
                     if(!last["prerelease"]) isPreRelease.style = "display: none;";
 
                     let table = '<table><thead><tr><th>Release</th><th>Description</th></tr></thead><tbody>';
-                    for(let i = 0; i < jsonFile.length; i++) {
+                        for(let i = 0; i < jsonFile.length; i++) {
                         table +=
                             '<tr>'
                                 +'<td><a href="' + jsonFile[i]["assets"][0]["browser_download_url"] + '">'+ jsonFile[i].name + '</a></td><td>' + jsonFile[i].body + '</td>'
